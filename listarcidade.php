@@ -80,6 +80,8 @@
                 <th>Código</th>
                 <th>Nome</th>
                 <th>Estado</th>
+                <th>Alterar</th>
+                <th>Deletar</th>
             </tr>
 
             <?php
@@ -88,6 +90,8 @@
                     echo "<td>".$row['id']."</td>";
                     echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['estado']."</td>";
+                    echo "<td><a href='alteracidade.php?id=".$row['id']."'>Alterar</a></td>";
+                    echo "<td><a href='deletacidade.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Cidade</title>
+    <title>Cadastro de Clientes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,21 +82,20 @@
     </style>
 </head>
 <body>
-    <form action="CadastroCidade.php" method="post">
+    <form action="cadastrocliente.php" method="post">
         <fieldset>
-            <legend>Cadastro de Cidade</legend>
+            <legend>Cadastro de Cliente</legend>
             <div>
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome">
             </div>
             <div>
-                <label for="estado">Estado:</label>
-                <select name="estado" id="estado">
-                    <option value="SP">SP</option>
-                    <option value="RJ">RJ</option>
-                    <option value="MG">MG</option>
-                    <option value="ES">ES</option>
-                </select>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div>
+                <label for="senha">Senha</label>
+                <input type="text" name="senha" id="senha">
             </div>
             <div>
                 <button type="submit">Cadastrar</button>
