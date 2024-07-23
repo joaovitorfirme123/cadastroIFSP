@@ -53,7 +53,7 @@
                 $senha = mysqli_real_escape_string($con, $senha);
                 
                 // Verifica se os campos estão preenchidos
-                if (!empty($nome) && !empty($email) && !empty($sanha)) {
+                if (!empty($nome) && !empty($email) && !empty($senha)) {
                     // Monta a query SQL para inserção
                     $sql = "INSERT INTO cliente (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
                     
