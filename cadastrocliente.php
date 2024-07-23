@@ -4,76 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Processamento de Cadastro</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-        }
-        .success {
-            color: green;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+    <title>Cadastro de Clientes</title>
 </head>
 <body>
-    <div class="container">
-        <?php
-            include('includes/conexao.php');
-            
-            // Verifica se o formulário foi enviado
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $nome = $_POST['nome'];
-                $email = $_POST['email'];
-                $senha = $_POST['senha'];
-                
-                // Limpa e valida os dados do formulário
-                $nome = mysqli_real_escape_string($con, $nome);
-                $email = mysqli_real_escape_string($con, $email);
-                $senha = mysqli_real_escape_string($con, $senha);
-                
-                // Verifica se os campos estão preenchidos
-                if (!empty($nome) && !empty($email) && !empty($senha)) {
-                    // Monta a query SQL para inserção
-                    $sql = "INSERT INTO cliente (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
-                    
-                    // Executa a query
-                    $result = mysqli_query($con, $sql);
-                    
-                    // Verifica se a inserção foi bem-sucedida
-                    if ($result) {
-                        echo "<h2 class='success'>Dados cadastrados com sucesso!</h2>";
-                    } else {
-                        echo "<h2 class='error'>Erro ao cadastrar os dados!</h2>";
-                        echo "<p>" . mysqli_error($con) . "</p>";
+    <form action="CadastroClientExe.php" method="post">
+        <fieldset>
+            <legend>Cadastro de Cliente</legend>
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div>
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" >
+            </div>
+            <div>
+                <label for="ativo">Situação</label>
+                <input type="hidden" name="ativo" id="ativo" value="0">
+                <input type="checkbox" name="ativo" id="ativo" value="1">
+            </div>
+            <div>
+                <label for="cidade">Cidade</label>
+                <select name="cidade" id="cidade">
+                    <?php
+                    include('includes/conexao.php');
+                    $sql = "SELECT * FROM cidade";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_array($result)){
+                        echo "option value ='".$row['id']."'>".$row['nome']."/".$row['estado']."</opyion";
                     }
-                } else {
-                    echo "<h2 class='error'>Por favor, preencha todos os campos do formulário!</h2>";
-                }
-            } else {
-                echo "<h2 class='error'>Erro: método de requisição inválido!</h2>";
-            }
-        ?>
+                    ?>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Cadastrar</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="back-button">
+        <a href="index.html">Volte para a página inicial</a>
     </div>
 </body>
 </html>

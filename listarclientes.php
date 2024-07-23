@@ -69,16 +69,19 @@
     <div class="container">
         <?php
             include('includes/conexao.php');
-            $sql = "SELECT * FROM cidade";
+            $sql = "SELECT * FROM cliente";
             $result = mysqli_query($con, $sql);
         ?>
 
-        <h1>Consulta de Cidades</h1>
+        <h1>Consulta de Clientes</h1>
         
         <table>
             <tr>
                 <th>Código</th>
                 <th>Nome</th>
+                <th>Email</th>
+                <th>Ativo</th>
+                <th>Cidade</th>
                 <th>Estado</th>
                 <th>Alterar</th>
                 <th>Deletar</th>
@@ -89,9 +92,12 @@
                     echo "<tr>";
                     echo "<td>".$row['id']."</td>";
                     echo "<td>".$row['nome']."</td>";
+                    echo "<td>".$row['email']."</td>";
+                    echo "<td>".$row['ativo']."</td>";
+                    echo "<td>".$row['cidade']."</td>";
                     echo "<td>".$row['estado']."</td>";
-                    echo "<td><a href='alteracidade.php?id=".$row['id']."'>Alterar</a></td>";
-                    echo "<td><a href='deletacidade.php?id=".$row['id']."'>Deletar</a></td>";
+                    echo "<td><a href='alteracliente.php?id=".$row['id']."'>Alterar</a></td>";
+                    echo "<td><a href='deletacliente.php?id=".$row['id']."'>Deletar</a></td>";
                     echo "</tr>";
                 }
             ?>
